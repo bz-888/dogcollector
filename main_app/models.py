@@ -21,7 +21,7 @@ MEALS = (
 )
 
 class Feeding(models.Model):
-    date = models.DateField()
+    date = models.DateField("Feeding Date")
     meal = models.CharField(
         max_length=1,
         choices=MEALS,
@@ -32,3 +32,6 @@ class Feeding(models.Model):
     
     def __str__(self):
         return f"{self.get_meal_display()} on {self.date}"
+    
+    class Meta:
+        ordering = ['-date']
